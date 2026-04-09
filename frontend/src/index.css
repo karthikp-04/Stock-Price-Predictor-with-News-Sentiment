@@ -1,0 +1,157 @@
+/* ═══════════════════════════════════════════════════════════════
+   StockSense AI — Design System
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Custom Properties ──────────────────────────────────────── */
+:root {
+  /* Background */
+  --bg-primary: #080b12;
+  --bg-secondary: #0d1117;
+  --bg-tertiary: #161b22;
+  --bg-card: rgba(13, 17, 23, 0.85);
+  --bg-glass: rgba(22, 27, 40, 0.5);
+  --bg-hover: rgba(48, 54, 61, 0.3);
+
+  /* Borders */
+  --border-default: rgba(48, 54, 61, 0.6);
+  --border-muted: rgba(48, 54, 61, 0.3);
+
+  /* Text */
+  --text-primary: #e6edf3;
+  --text-secondary: #8b949e;
+  --text-muted: #484f58;
+
+  /* Accents */
+  --accent-blue: #58a6ff;
+  --accent-purple: #bc8cff;
+
+  /* Signals */
+  --signal-buy: #3fb950;
+  --signal-buy-bg: rgba(63, 185, 80, 0.15);
+  --signal-sell: #f85149;
+  --signal-sell-bg: rgba(248, 81, 73, 0.15);
+  --signal-hold: #d29922;
+  --signal-hold-bg: rgba(210, 153, 34, 0.15);
+
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow: 400ms ease;
+}
+
+/* ── Reset ──────────────────────────────────────────────────── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── Ambient Background ─────────────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 15% 50%, rgba(88, 166, 255, 0.04) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 20%, rgba(188, 140, 255, 0.035) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 85%, rgba(63, 185, 80, 0.025) 0%, transparent 55%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Scrollbar ──────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--border-default);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+/* ── Keyframes ──────────────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-buy {
+  0%, 100% { box-shadow: 0 0 10px rgba(63, 185, 80, 0.15); }
+  50%      { box-shadow: 0 0 22px rgba(63, 185, 80, 0.45); }
+}
+
+@keyframes pulse-sell {
+  0%, 100% { box-shadow: 0 0 10px rgba(248, 81, 73, 0.15); }
+  50%      { box-shadow: 0 0 22px rgba(248, 81, 73, 0.45); }
+}
+
+@keyframes pulse-hold {
+  0%, 100% { box-shadow: 0 0 10px rgba(210, 153, 34, 0.15); }
+  50%      { box-shadow: 0 0 22px rgba(210, 153, 34, 0.45); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+@keyframes glow-line {
+  0%   { opacity: 0.3; }
+  50%  { opacity: 1; }
+  100% { opacity: 0.3; }
+}
+
+/* ── Utility: Skeleton Loader ───────────────────────────────── */
+.skeleton {
+  background: linear-gradient(90deg, var(--bg-tertiary) 25%, var(--bg-hover) 50%, var(--bg-tertiary) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-sm);
+}
