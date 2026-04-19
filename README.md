@@ -54,6 +54,7 @@ source venv/bin/activate  # Windows: .\venv\Scripts\activate
 
 # Install dependencies
 pip install -r requirements.txt
+pip install --upgrade yfinance
 
 # Create .env file
 echo "NEWS_API_KEY=your_newsapi_key" > .env
